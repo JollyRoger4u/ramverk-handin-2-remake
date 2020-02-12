@@ -7,7 +7,7 @@ import ThemeProvider from '../contexts/themeProvider';
 
 const Layout = React.lazy(() => import(/* webpackChunkName: "layout" */ './layout'));
 
-interface Props {}
+interface Props { }
 interface State {
     isWelcomeScreenEnabled: boolean
 }
@@ -27,18 +27,18 @@ export default class App extends Component<Props, State> {
 
     get WelcomeScreen() {
         if (this.state.isWelcomeScreenEnabled) {
-            return <WelcomeScreen dismissed={this.removeWelcomeScreen}/>
+            return <WelcomeScreen dismissed={this.removeWelcomeScreen} />
         }
     }
 
-    render () {
+    render() {
         return (
             <ErrorBoundary>
                 <Router>
                     <ThemeProvider>
                         {this.WelcomeScreen}
-                        <Suspense fallback={<Monkey/>}>
-                            <Layout/>
+                        <Suspense fallback={<Monkey />}>
+                            <Layout />
                         </Suspense>
                     </ThemeProvider>
                 </Router>

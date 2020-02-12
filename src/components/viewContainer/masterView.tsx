@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react';
 import ViewSection from './viewSection';
 import ImageLink from './imageLink';
-
+import SearchComponent from './searchComponent/searchComponent'
 interface Props {
     detailViews: string[]
 }
@@ -11,11 +11,8 @@ export default function MasterView(props: Props) {
 
     return (
         <div style={container}>
-            {props.detailViews.map((view) => (
-                <ViewSection key={view}>
-                    <ImageLink view={view}/>
-                </ViewSection>
-            ))}
+            <SearchComponent />
+
         </div>
     );
 }
@@ -26,3 +23,12 @@ const container: CSSProperties = {
     height: '100%',
     margin: '1em'
 }
+
+
+/*
+           {props.detailViews.map((view) => (
+                <ViewSection key={view}>
+                    <ImageLink view={view} />
+                </ViewSection>
+            ))}
+*/

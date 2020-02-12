@@ -1,0 +1,28 @@
+De tre bildlänkarna (forest, sky, desert) på startsidan skall bytas ut mot ett sökfält (input). (G)
+
+
+
+Söktermen skriven i sökfältet skall läggas till i URL’en via en sökknapp (G)
+
+
+
+Oavsett vald sökterm skall detaljsidan (försöka) hämta text och bilder. (G)
+På bilderna skall det finnas ett hjärta som man gillar genom att klicka på. När man klickar ska hjärtat bli ifyllt. 
+
+
+
+
+Gillade bilder skall sparas i localStorage under den aktuella söktermen och alltid visas även efter omladdning av sidan tillsammans med de slumpade bilderna. (G)
+
+
+ 
+
+
+
+Söktermen skriven i sökfältet skall läggas till i URL’en när användaren trycker på enter-knappen på tangentbordet. (VG)
+Sökfältet skall skrivas som en egen komponent och ändra tema med resten av applikationen. (VG)
+Gillade bilder skall alltid ligga först i listan när man har sökt på dess term. (VG)
+Gillade bilder skall ha en knapp ”Ladda hem bilden” som vid klick öppnar modalen och ger använden möjlighet att välja vilken storlek på bilden som ska sparas. (VG)
+När detaljsidan laddas skall söktermen sparas i localStorage så att den sedan kan läsas in i sökfältet på startsidan varje gång sidan laddas (VG)
+Samtliga bilder sparade under alla olika söktermer skall listas på startsidan (VG)
+Det skall finnas en optional prop på sökfältet (focusOnMount?: boolean) som när sant fokuserar sökfältet när komponenten har laddats. Propen skall vara satt för sökfältet på startsidan. (VG)

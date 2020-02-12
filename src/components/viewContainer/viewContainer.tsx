@@ -8,18 +8,24 @@ const DetailView = React.lazy(() => import(/* webpackChunkName: "detailView" */ 
 /** React function component */
 export default function ViewContainer() {
 
-    const detailViews = ['forest', 'sky', 'desert'];
+    const detailViews = ['search', 'forest', 'sky', 'desert'];
 
     return (
-        <Suspense fallback={<Spinner/>}>
+        <Suspense fallback={<Spinner />}>
             <Switch>
                 <Route exact path="/" render={() =>
-                    <MasterView detailViews={detailViews}/>
-                }/>
-                    <Route path="/forest" component={DetailView}/>
-                    <Route path="/sky" component={DetailView}/>
-                    <Route path="/desert" component={DetailView}/>
+                    <MasterView detailViews={detailViews} />
+                } />
+
+
             </Switch>
         </Suspense>
     );
 }
+
+
+/*
+                <Route path="/forest" component={DetailView} />
+                <Route path="/sky" component={DetailView} />
+                <Route path="/desert" component={DetailView} />
+*/

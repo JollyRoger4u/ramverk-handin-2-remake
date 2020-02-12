@@ -14,7 +14,7 @@ interface State {
 
 export default class ImageSection extends Component<Props, State> {
     /** Not a good place for the key.. well.. what the heck.. - GET YOUR OWN! */
-    readonly accessKey = "ADD_YOUR_ACCESS_KEY_HERE"
+    readonly accessKey = "fa8c88cf59c60c0b5207391d79029cad044c8acf7e10634328da3dbc62e87e89"
     readonly imageDatabaseApiUrl = "https://api.unsplash.com/search/photos/"
 
     state: State = {
@@ -40,7 +40,7 @@ export default class ImageSection extends Component<Props, State> {
                 }
             })
             this.handleResponse(response);
-        } catch(error) {
+        } catch (error) {
             console.error(error)
         }
     }
