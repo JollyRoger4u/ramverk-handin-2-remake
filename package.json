@@ -1,7 +1,7 @@
 {
-  "name": "react-playground",
+  "name": "react-handin-2",
   "version": "1.0.0",
-  "description": "",
+  "description": "Kodbasen är ett grundläggande React och Typescript projekt och är utgångspunkten för inlämningsuppgift 2 i Ramverkskursen.",
   "scripts": {
     "app": "npm-run-all --parallel build-watch live-server",
     "build": "webpack-cli",
@@ -11,9 +11,9 @@
   "author": "David Jensen",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "live-server": "^1.2.1",
-    "react": "^16.8.3",
+    "react": "^16.12.0",
     "react-dom": "^16.8.3",
     "react-router-dom": "^4.3.1",
     "react-spinners": "^0.5.1"
@@ -29,5 +29,17 @@
     "typescript": "^3.3.3333",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3"
-  }
+  },
+  "main": "webpack.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JollyRoger4u/ramverk-handin-2-remake.git"
+  },
+  "keywords": [
+    "schoolwork"
+  ],
+  "bugs": {
+    "url": "https://github.com/JollyRoger4u/ramverk-handin-2-remake/issues"
+  },
+  "homepage": "https://github.com/JollyRoger4u/ramverk-handin-2-remake#readme"
 }
