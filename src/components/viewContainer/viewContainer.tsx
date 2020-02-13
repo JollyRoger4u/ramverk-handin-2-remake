@@ -8,7 +8,7 @@ const DetailView = React.lazy(() => import(/* webpackChunkName: "detailView" */ 
 /** React function component */
 export default function ViewContainer() {
 
-    const detailViews = ['search', 'forest', 'sky', 'desert'];
+    const detailViews = ['forest', 'sky', 'desert'];
 
     return (
         <Suspense fallback={<Spinner />}>
@@ -16,6 +16,8 @@ export default function ViewContainer() {
                 <Route exact path="/" render={() =>
                     <MasterView detailViews={detailViews} />
                 } />
+                <Route path="/forest" component={DetailView} />
+                <Route path="/ape" component={DetailView} />
 
 
             </Switch>
