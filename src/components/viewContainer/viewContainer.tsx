@@ -7,17 +7,15 @@ const DetailView = React.lazy(() => import(/* webpackChunkName: "detailView" */ 
 
 /** React function component */
 export default function ViewContainer() {
-
+    let localData = localStorage.getItem("lastSearch") as string;
     const detailViews = ['forest', 'sky', 'desert'];
 
     return (
         <Suspense fallback={<Spinner />}>
             <Switch>
-                <Route exact path="/" render={() =>
-                    <MasterView detailViews={detailViews} />
+                <Route path="/" render={() =>
+                    <MasterView detailViews={localData} />
                 } />
-                <Route path="/forest" component={DetailView} />
-                <Route path="/ape" component={DetailView} />
 
 
             </Switch>

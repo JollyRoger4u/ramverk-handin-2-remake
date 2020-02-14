@@ -4,7 +4,7 @@ import React, { CSSProperties } from 'react';
 import SearchComponent from './detailView/searchComponent/searchComponent'
 import { withRouter } from 'react-router-dom';
 interface Props {
-    detailViews: string[]
+    detailViews: string
 }
 
 /** React function component */

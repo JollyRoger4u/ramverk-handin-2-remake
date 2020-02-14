@@ -12,6 +12,9 @@ interface State {
     isWelcomeScreenEnabled: boolean
 }
 
+
+
+
 /**
  * Application top level component. This is a good place for future
  * top level components - ErrorBoundary, Provider & Suspense, etc.
@@ -32,9 +35,11 @@ export default class App extends Component<Props, State> {
     }
 
     render() {
+        let localData = localStorage.getItem("searchData");
         return (
             <ErrorBoundary>
                 <Router>
+
                     <ThemeProvider>
                         {this.WelcomeScreen}
                         <Suspense fallback={<Monkey />}>

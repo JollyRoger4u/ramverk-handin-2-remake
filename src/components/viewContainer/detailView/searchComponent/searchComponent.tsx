@@ -11,17 +11,21 @@ export default class SearchComponent extends Component {
         return (
             <div>
                 <SearchSection searchTerm={savedTerm} />
-                <ViewSection key={savedTerm} >
-                    <ImageLink view="forest" />
 
-                </ViewSection>
-                <ViewSection key="ape" >
-                    <ImageLink view="ape" />
 
-                </ViewSection>
             </div>
 
         )
     }
 }
 
+/*
+                <ViewSection key={savedTerm} >
+                    <ImageLink view={savedTerm} />
+
+                </ViewSection>
+                <ViewSection key="sky" >
+                    <ImageLink view="sky" />
+
+                </ViewSection>
+*/

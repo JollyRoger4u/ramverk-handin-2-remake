@@ -37,7 +37,7 @@ export default class ImageSection extends Component<Props, State> {
                     query: this.props.view,
                     //query: "ape",
                     //page: Math.round(Math.random() * 100),
-                    per_page: 4,
+                    per_page: 24,
                 }
             })
             this.handleResponse(response);
