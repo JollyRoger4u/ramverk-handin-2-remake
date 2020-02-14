@@ -47,7 +47,7 @@ export default class TextSection extends Component<Props, State> {
         // Remove first content
         paragraphs.shift()
         // Trim end of last paragraph
-        let lastParapgraph = paragraphs.pop() || ""
+        let lastParapgraph = paragraphs.pop() || ""
         lastParapgraph = lastParapgraph.substr(0, lastParapgraph.indexOf('</p>'))
         paragraphs.push(lastParapgraph)
 
@@ -64,7 +64,7 @@ export default class TextSection extends Component<Props, State> {
                 }
             })
             this.handleResponse(response)
-        } catch(error) {
+        } catch (error) {
             console.error(error)
         }
     }
@@ -75,10 +75,11 @@ export default class TextSection extends Component<Props, State> {
             <ThemeContext.Consumer>
                 {({ theme }) => (
                     <div style={root}>
-                        {isLoading ? <Spinner/> : null}
-                        {paragraphs.map((paragraph) =>
+                        {isLoading ? <Spinner /> : null}
+                        <p>massive bloody block of annoying text</p>
+                        {/*paragraphs.map((paragraph) =>
                             <p key={paragraph.substr(0, 10)} style={text(theme)}>{paragraph}</p>
-                        )}
+                        )*/}
                     </div>
                 )}
             </ThemeContext.Consumer>

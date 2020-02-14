@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react';
 //import ViewSection from './viewSection';
 //import ImageLink from './imageLink';
-import SearchComponent from './searchComponent/searchComponent'
+import SearchComponent from './detailView/searchComponent/searchComponent'
 import { withRouter } from 'react-router-dom';
 interface Props {
     detailViews: string[]

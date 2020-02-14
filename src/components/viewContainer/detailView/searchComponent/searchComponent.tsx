@@ -1,7 +1,7 @@
 import React, { Component, CSSProperties } from 'react';
-import SearchSection from './SearchSection';
-import ViewSection from '../viewSection';
-import ImageLink from '../imageLink';
+import SearchSection from './searchSection';
+import ViewSection from '../../viewSection';
+import ImageLink from '../../imageLink';
 
 
 
