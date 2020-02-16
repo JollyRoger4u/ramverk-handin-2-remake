@@ -1,4 +1,5 @@
-De tre bildlänkarna (forest, sky, desert) på startsidan skall bytas ut mot ett sökfält (input). (G)
+De tre bildlänkarna (forest, sky, desert) på startsidan
+skall bytas ut mot ett sökfält (input). (G)
 
 
 
@@ -7,12 +8,15 @@ Söktermen skriven i sökfältet skall läggas till i URL’en via en sökknapp 
 
 
 Oavsett vald sökterm skall detaljsidan (försöka) hämta text och bilder. (G)
-På bilderna skall det finnas ett hjärta som man gillar genom att klicka på. När man klickar ska hjärtat bli ifyllt. 
+På bilderna skall det finnas ett hjärta 
+som man gillar genom att klicka på. När man klickar ska hjärtat bli ifyllt. 
 
 
 
 
-Gillade bilder skall sparas i localStorage under den aktuella söktermen och alltid visas även efter omladdning av sidan tillsammans med de slumpade bilderna. (G)
+Gillade bilder skall sparas i localStorage 
+under den aktuella söktermen och alltid visas även 
+efter omladdning av sidan tillsammans med de slumpade bilderna. (G)
 
 
  

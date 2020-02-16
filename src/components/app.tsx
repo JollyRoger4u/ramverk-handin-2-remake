@@ -35,7 +35,7 @@ export default class App extends Component<Props, State> {
     }
 
     render() {
-        let localData = localStorage.getItem("searchData");
+
         return (
             <ErrorBoundary>
                 <Router>

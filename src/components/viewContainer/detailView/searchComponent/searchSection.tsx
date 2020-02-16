@@ -1,7 +1,61 @@
 import React, { Component } from 'react';
 import ImageSection from "../imageSection"
 
+interface State {
+    lastSearch: string;
+    currentSearch: string;
+    test: any;
+}
+export default class SearchSection extends Component {
 
+    state = {
+        lastSearch: "",
+        currentSearch: "",
+        test: ""
+    }
+
+
+    searchChange = (e: any) => {
+        this.setState({ test: this.state.currentSearch })
+        this.setState({ currentSearch: e.target.value });
+
+
+    }
+    clickHandler = (currentSearch: string) => {
+        console.log(currentSearch)
+        localStorage.setItem("lastSearch", currentSearch)
+        this.forceUpdate()
+    }
+    render() {
+        let savedLocalSearch = this.state.currentSearch
+        let imageWindow = <ImageSection view={this.state.currentSearch} />
+        return (
+            <div>
+                <p>last searched: {savedLocalSearch}</p>
+                <input
+                    type="text"
+                    placeholder="Please enter search term"
+                    onChange={(e) => { this.searchChange(e) }}
+                ></input>
+                <button onClick={(e) => { this.clickHandler(this.state.currentSearch) }}>Search!</button>
+                <h1>{this.state.currentSearch}</h1>
+                <h1>{this.state.test}</h1>
+                {imageWindow}
+                <div>
+
+
+
+                </div>
+
+            </div>
+        )
+
+    }
+}
+
+
+
+/*
 interface Props {
     searchTerm: string;
 }
@@ -33,7 +87,9 @@ export default class SearchSection extends Component<Props, State>{
         }
     }
     render() {
-        <ImageSection view={this.state.currentSearchTerm}></ImageSection>
+        let updateImages = <ImageSection view={this.state.currentSearchTerm} />
+        { console.log(this.state.searchPerformed) }
+
         return (
             <div>
                 <input type="text"
@@ -43,8 +99,8 @@ export default class SearchSection extends Component<Props, State>{
                     value={this.state.currentSearchTerm as string}
                 />
                 <p>{this.state.currentSearchTerm}</p>
-                <button onClick={() => this.searchActivated()}>Search now!</button>
-                <ImageSection view={this.state.currentSearchTerm}></ImageSection>
+                <button onClick={(e) => this.searchActivated(e)}>Search now!</button>
+                <div>{updateImages}</div>
                 <h2>{this.state.currentSearchTerm}</h2>
             </div >
 
@@ -57,14 +113,17 @@ export default class SearchSection extends Component<Props, State>{
     //Checks keypresses to detect if the button pressed is enter
     isKeyEnter = (e: any) => {
         if (e.key === "Enter") {
-            this.searchActivated()
+            this.searchActivated(e)
         }
     }
     //Executes the actual search
-    searchActivated = () => {
+    searchActivated = (e: any) => {
         localStorage.setItem("lastSearch", this.state.currentSearchTerm);
+        this.setState({ currentSearchTerm: e.target.value.substr(0, 20) })
         this.setState({ searchPerformed: true })
         console.log("CLICK!")
+        console.log(this.state.searchPerformed)
 
     }
 }
+*/

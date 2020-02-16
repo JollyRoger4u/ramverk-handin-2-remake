@@ -9,7 +9,8 @@ interface Props {
 }
 interface State {
     imagesUrls: ImageUrls[],
-    isLoading: boolean
+    isLoading: boolean,
+    view: string
 }
 
 export default class ImageSection extends Component<Props, State> {
@@ -19,7 +20,8 @@ export default class ImageSection extends Component<Props, State> {
 
     state: State = {
         imagesUrls: new Array(24).fill({}),
-        isLoading: true
+        isLoading: true,
+        view: localStorage.getItem("lastSearch") as string
     }
 
     handleResponse(response: AxiosResponse) {
@@ -28,13 +30,13 @@ export default class ImageSection extends Component<Props, State> {
             this.setState({ imagesUrls: images, isLoading: false })
         }
     }
-
+    //async await
     async componentDidMount() {
         try {
             const response = await Axios.get(this.imageDatabaseApiUrl, {
                 params: {
                     client_id: this.accessKey,
-                    query: this.props.view,
+                    query: this.state.view,
                     //query: "ape",
                     //page: Math.round(Math.random() * 100),
                     per_page: 24,
@@ -50,7 +52,9 @@ export default class ImageSection extends Component<Props, State> {
         return (
             <ThemeContext.Consumer>
                 {({ theme }) => (
-                    <div style={root(theme)}>
+
+                    <div style={root(theme)} key={this.props.view}>
+                        <h1>{this.state.view}</h1>
                         {this.state.imagesUrls.map((urls, index) =>
                             <ImageCard key={index} urls={urls} />
                         )}
