@@ -12,7 +12,7 @@ På bilderna skall det finnas ett hjärta
 som man gillar genom att klicka på. När man klickar ska hjärtat bli ifyllt. 
 
 
-
+<a href='https://dryicons.com/free-icons/heart'> Icon by Dryicons </a>
 
 Gillade bilder skall sparas i localStorage 
 under den aktuella söktermen och alltid visas även 

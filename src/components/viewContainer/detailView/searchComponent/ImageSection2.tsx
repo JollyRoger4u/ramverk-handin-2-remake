@@ -11,7 +11,6 @@ interface State {
     imagesUrls: ImageUrls[],
     isLoading: boolean,
     view: string,
-    imageView: string
 }
 
 export default class ImageSection extends Component<Props, State> {
@@ -25,7 +24,6 @@ export default class ImageSection extends Component<Props, State> {
             imagesUrls: new Array(24).fill({}),
             isLoading: true,
             view: "",
-            imageView: ""
         }
 
     }
@@ -36,16 +34,7 @@ export default class ImageSection extends Component<Props, State> {
 
         }
     }
-    //async await
-    stateUpdater = () => {
-        this.setState({ view: this.props.view })
-    }
-    componentWillReceiveProps() {
-        this.setState({ imageView: "bollocks" })
-    }
-    async componentDidMount() {
-
-
+    async fetchData(props: Props) {
         try {
             const response = await Axios.get(this.imageDatabaseApiUrl, {
                 params: {
@@ -60,30 +49,35 @@ export default class ImageSection extends Component<Props, State> {
         } catch (error) {
             console.error(error)
         }
+    }
+    componentWillReceiveProps(props: Props) {
+        this.fetchData(props);
 
     }
+
     render() {
-        //if (this.props.view) { this.setState({ view: this.props.view }) }
+        if (this.props.view != "") {
+            return (
 
-        return (
-            <ThemeContext.Consumer>
-                {({ theme }) => (
+                <ThemeContext.Consumer>
+                    {({ theme }) => (
 
-                    <div style={root(theme)} key={this.props.view}>
-                        <h1>props: {this.props.view}</h1>
-                        <br />
-                        <h1> state: {this.state.view}</h1>
+                        <div style={root(theme)} key={this.props.view}>
 
-                        <h1> imageView: {this.state.imageView}</h1>
-                        {this.state.imagesUrls.map((urls, index) =>
-                            <ImageCard key={index} urls={urls} />
-                        )}
-                    </div>
-                )}
+                            {this.state.imagesUrls.map((urls, index) =>
+                                <ImageCard key={index} urls={urls} />
+                            )}
+                        </div>
+                    )}
 
-            </ThemeContext.Consumer>
+                </ThemeContext.Consumer>
 
-        )
+            )
+        } else {
+            return (
+                <div><p>No searchdata found</p></div>
+            )
+        }
 
     }
 }

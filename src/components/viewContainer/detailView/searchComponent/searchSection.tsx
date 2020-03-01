@@ -4,31 +4,23 @@ import ImageSection2 from "./imageSection2"
 interface State {
     lastSearch: string;
     currentSearch: string;
-    test: any;
 }
 export default class SearchSection extends Component {
 
     state = {
         lastSearch: "",
         currentSearch: "",
-        test: ""
     }
-
 
     searchChange = (e: any) => {
-        this.setState({ test: this.state.currentSearch })
         this.setState({ currentSearch: e.target.value });
-
-
     }
     clickHandler = (currentSearch: string) => {
-        console.log(currentSearch)
         localStorage.setItem("lastSearch", currentSearch)
         this.setState({ view: localStorage.getItem("lastSearch") as string })
     }
     render() {
-        let savedLocalSearch = this.state.currentSearch
-        let imageWindow = <ImageSection2 view={this.state.currentSearch} />
+        let savedLocalSearch = this.state.lastSearch
         return (
             <div>
                 <p>last searched: {savedLocalSearch}</p>
@@ -39,8 +31,8 @@ export default class SearchSection extends Component {
                 ></input>
                 <button onClick={(e) => { this.clickHandler(this.state.currentSearch) }}>Search!</button>
                 <h1>{this.state.currentSearch}</h1>
-                <h1>{this.state.test}</h1>
-                <ImageSection2 view={localStorage.getItem("lastSearch") as string} />
+                <h1>{this.state.lastSearch}</h1>
+                <ImageSection2 view={this.state.currentSearch} />
                 <div>
 
 
