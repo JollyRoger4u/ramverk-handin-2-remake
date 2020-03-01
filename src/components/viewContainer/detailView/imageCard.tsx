@@ -54,14 +54,14 @@ export default class ImageCard extends Component<Props> {
                             onMouseLeave={this.onMouseLeave}
                             onClick={this.openModal}
                         >
-                            {urls.small ? <img src={urls.small} style={card}/> : <Spinner/>}
+                            {urls.small ? <img src={urls.small} style={card} /> : <Spinner />}
                         </div>
                     )}
                 </ThemeContext.Consumer>
                 {
                     this.state.isModalOpen ? (
                         <Modal shouldClose={this.closeModal}>
-                            <img src={urls.regular} style={preview}/>
+                            <img src={urls.regular} style={preview} />
                         </Modal>
                     ) : null
                 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ImageSection from "../imageSection"
+import ImageSection2 from "./imageSection2"
 
 interface State {
     lastSearch: string;
@@ -24,11 +24,11 @@ export default class SearchSection extends Component {
     clickHandler = (currentSearch: string) => {
         console.log(currentSearch)
         localStorage.setItem("lastSearch", currentSearch)
-        this.forceUpdate()
+        this.setState({ view: localStorage.getItem("lastSearch") as string })
     }
     render() {
         let savedLocalSearch = this.state.currentSearch
-        let imageWindow = <ImageSection view={this.state.currentSearch} />
+        let imageWindow = <ImageSection2 view={this.state.currentSearch} />
         return (
             <div>
                 <p>last searched: {savedLocalSearch}</p>
@@ -40,7 +40,7 @@ export default class SearchSection extends Component {
                 <button onClick={(e) => { this.clickHandler(this.state.currentSearch) }}>Search!</button>
                 <h1>{this.state.currentSearch}</h1>
                 <h1>{this.state.test}</h1>
-                {imageWindow}
+                <ImageSection2 view={localStorage.getItem("lastSearch") as string} />
                 <div>
 
 
@@ -56,6 +56,7 @@ export default class SearchSection extends Component {
 
 
 /*
+{//{this.state.currentSearch}}
 interface Props {
     searchTerm: string;
 }
