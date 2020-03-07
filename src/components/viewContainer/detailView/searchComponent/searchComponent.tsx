@@ -7,6 +7,7 @@ import ImageLink from '../../imageLink';
 
 export default class SearchComponent extends Component {
     render() {
+
         return (
             <div>
                 <SearchSection />

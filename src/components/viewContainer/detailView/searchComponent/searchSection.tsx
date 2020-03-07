@@ -4,45 +4,86 @@ import ImageSection2 from "./imageSection2"
 interface State {
     lastSearch: string;
     currentSearch: string;
+    tempSearch: string;
+}
+interface Props {
+    view: string
 }
 export default class SearchSection extends Component {
 
     state = {
         lastSearch: "",
-        currentSearch: "",
+        tempSearch: "",
     }
 
-    searchChange = (e: any) => {
-        this.setState({ currentSearch: e.target.value });
+    componentDidMount() {
+        let isFirstSearch = localStorage.getItem("lastSearch" as string);
+        this.setState({ lastSearch: isFirstSearch })
     }
-    clickHandler = (currentSearch: string) => {
-        localStorage.setItem("lastSearch", currentSearch)
-        this.setState({ view: localStorage.getItem("lastSearch") as string })
-    }
+
+
     render() {
-        let savedLocalSearch = this.state.lastSearch
         return (
             <div>
-                <p>last searched: {savedLocalSearch}</p>
-                <input
-                    type="text"
-                    placeholder="Please enter search term"
-                    onChange={(e) => { this.searchChange(e) }}
-                ></input>
-                <button onClick={(e) => { this.clickHandler(this.state.currentSearch) }}>Search!</button>
-                <h1>{this.state.currentSearch}</h1>
-                <h1>{this.state.lastSearch}</h1>
-                <ImageSection2 view={this.state.currentSearch} />
-                <div>
-
-
-
-                </div>
-
+                <h1>Last Search: {this.state.lastSearch}</h1>
+                <input type="text" placeholder="search" onChange={}></input>
             </div>
         )
-
     }
+
+}
+
+/*
+state = {
+    lastSearch: "",
+    currentSearch: "",
+    tempSearch: "",
+}
+
+componentDidMount() {
+    let isSearchSaved = localStorage.getItem("lastSearch" as string);
+    if (isSearchSaved != "") {
+        this.setState({ lastSearch: isSearchSaved })
+        console.log("component is loaded moddafockka");
+        console.log(isSearchSaved);
+    }
+}
+searchChange = (e: any) => {
+    this.setState({ tempSearch: e.target.value });
+}
+
+clickHandler = (updateSearch: string) => {
+    this.setState({ tempSearch: updateSearch })
+    localStorage.setItem("lastSearch", updateSearch)
+    console.log("Clicked! currentstate: " + this.state.currentSearch)
+    console.log("Clicked! lastSearch: " + this.state.lastSearch)
+    console.log("Clicked! tempSearch: " + this.state.tempSearch)
+}
+render() {
+    let savedLocalSearch = this.state.lastSearch
+
+    return (
+        <div>
+            <p>last searched:  {savedLocalSearch}</p>
+            <input
+                type="text"
+                placeholder="Please enter search term"
+                onChange={(e) => { this.searchChange(e) }}
+            ></input>
+            <button onClick={(e) => { this.clickHandler(this.state.currentSearch) }}>Search!</button>
+            <h1>{this.state.currentSearch}</h1>
+            <h1>{this.state.lastSearch}</h1>
+            <ImageSection2 view={this.state.lastSearch} />
+            <div>
+
+
+
+            </div>
+
+        </div>
+    )
+
+}
 }
 
 
@@ -50,73 +91,73 @@ export default class SearchSection extends Component {
 /*
 {//{this.state.currentSearch}}
 interface Props {
-    searchTerm: string;
+searchTerm: string;
 }
 
 interface State {
-    currentSearchTerm: string,
-    searchPerformed: boolean;
-    test: number
+currentSearchTerm: string,
+searchPerformed: boolean;
+test: number
 }
 
 export default class SearchSection extends Component<Props, State>{
 
-    constructor(props: Props) {
-        super(props)
-        let tempSearchTerm: string = props.searchTerm;
-        //Sets default state
+constructor(props: Props) {
+    super(props)
+    let tempSearchTerm: string = props.searchTerm;
+    //Sets default state
+    this.state = {
+        currentSearchTerm: "",
+        searchPerformed: false,
+        test: 5
+    }
+    //Overrides default if lastSearch has a proper value
+    if (props.searchTerm) {
         this.state = {
-            currentSearchTerm: "",
-            searchPerformed: false,
-            test: 5
-        }
-        //Overrides default if lastSearch has a proper value
-        if (props.searchTerm) {
-            this.state = {
-                currentSearchTerm: tempSearchTerm,
-                searchPerformed: true,
-                test: 55
-            }
+            currentSearchTerm: tempSearchTerm,
+            searchPerformed: true,
+            test: 55
         }
     }
-    render() {
-        let updateImages = <ImageSection view={this.state.currentSearchTerm} />
-        { console.log(this.state.searchPerformed) }
+}
+render() {
+    let updateImages = <ImageSection view={this.state.currentSearchTerm} />
+    { console.log(this.state.searchPerformed) }
 
-        return (
-            <div>
-                <input type="text"
-                    placeholder="what do you want to find?"
-                    onKeyPress={this.isKeyEnter}
-                    onChange={this.updateSearchTerm}
-                    value={this.state.currentSearchTerm as string}
-                />
-                <p>{this.state.currentSearchTerm}</p>
-                <button onClick={(e) => this.searchActivated(e)}>Search now!</button>
-                <div>{updateImages}</div>
-                <h2>{this.state.currentSearchTerm}</h2>
-            </div >
+    return (
+        <div>
+            <input type="text"
+                placeholder="what do you want to find?"
+                onKeyPress={this.isKeyEnter}
+                onChange={this.updateSearchTerm}
+                value={this.state.currentSearchTerm as string}
+            />
+            <p>{this.state.currentSearchTerm}</p>
+            <button onClick={(e) => this.searchActivated(e)}>Search now!</button>
+            <div>{updateImages}</div>
+            <h2>{this.state.currentSearchTerm}</h2>
+        </div >
 
-        )
+    )
+}
+//runs to update the state so that the correct search gets executed when searchActivated runs
+updateSearchTerm = (event: any) => {
+    this.setState({ currentSearchTerm: event.target.value.substr(0, 20) })
+}
+//Checks keypresses to detect if the button pressed is enter
+isKeyEnter = (e: any) => {
+    if (e.key === "Enter") {
+        this.searchActivated(e)
     }
-    //runs to update the state so that the correct search gets executed when searchActivated runs
-    updateSearchTerm = (event: any) => {
-        this.setState({ currentSearchTerm: event.target.value.substr(0, 20) })
-    }
-    //Checks keypresses to detect if the button pressed is enter
-    isKeyEnter = (e: any) => {
-        if (e.key === "Enter") {
-            this.searchActivated(e)
-        }
-    }
-    //Executes the actual search
-    searchActivated = (e: any) => {
-        localStorage.setItem("lastSearch", this.state.currentSearchTerm);
-        this.setState({ currentSearchTerm: e.target.value.substr(0, 20) })
-        this.setState({ searchPerformed: true })
-        console.log("CLICK!")
-        console.log(this.state.searchPerformed)
+}
+//Executes the actual search
+searchActivated = (e: any) => {
+    localStorage.setItem("lastSearch", this.state.currentSearchTerm);
+    this.setState({ currentSearchTerm: e.target.value.substr(0, 20) })
+    this.setState({ searchPerformed: true })
+    console.log("CLICK!")
+    console.log(this.state.searchPerformed)
 
-    }
+}
 }
 */

@@ -27,12 +27,11 @@ export default class ImageSection extends Component<Props, State> {
         }
 
     }
-    handleResponse(response: AxiosResponse) {
-        if (response.data && response.data.results) {
-            const images = response.data.results.map((img: any) => img.urls)
-            this.setState({ imagesUrls: images, isLoading: false })
 
-        }
+    componentWillReceiveProps(props: Props) {
+        this.fetchData(props);
+        console.log("will reaceive props triggered")
+
     }
     async fetchData(props: Props) {
         try {
@@ -50,12 +49,20 @@ export default class ImageSection extends Component<Props, State> {
             console.error(error)
         }
     }
-    componentWillReceiveProps(props: Props) {
-        this.fetchData(props);
 
+    handleResponse(response: AxiosResponse) {
+        console.log(response)
+        if (response.data && response.data.results) {
+            const images = response.data.results.map((img: any) => img.urls)
+            this.setState({ imagesUrls: images, isLoading: false })
+
+        }
     }
 
+
+
     render() {
+        { console.log("image propsview:" + this.props.view) }
         if (this.props.view != "") {
             return (
 
@@ -63,7 +70,6 @@ export default class ImageSection extends Component<Props, State> {
                     {({ theme }) => (
 
                         <div style={root(theme)} key={this.props.view}>
-
                             {this.state.imagesUrls.map((urls, index) =>
                                 <ImageCard key={index} urls={urls} />
                             )}
