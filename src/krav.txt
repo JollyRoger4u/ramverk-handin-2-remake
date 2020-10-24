@@ -1,11 +1,12 @@
+-----------------------   Klara   ----------------------------
+
 De tre bildlänkarna (forest, sky, desert) på startsidan
 skall bytas ut mot ett sökfält (input). (G)
 
 
+-----------------------   TODO    ----------------------------
 
 Söktermen skriven i sökfältet skall läggas till i URL’en via en sökknapp (G)
-
-
 
 Oavsett vald sökterm skall detaljsidan (försöka) hämta text och bilder. (G)
 På bilderna skall det finnas ett hjärta 

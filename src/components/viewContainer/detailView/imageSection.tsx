@@ -36,8 +36,8 @@ export default class ImageSection extends Component<Props, State> {
             const response = await Axios.get(this.imageDatabaseApiUrl, {
                 params: {
                     client_id: this.accessKey,
-                    query: this.state.view,
-                    //query: "ape",
+                    //query: this.state.view,
+                    query: "sexy",
                     //page: Math.round(Math.random() * 100),
                     per_page: 24,
                 }
