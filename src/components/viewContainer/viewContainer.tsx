@@ -19,9 +19,9 @@ export default function ViewContainer() {
                     
                 } />
                 <Route path="/search:term" component={SearchResults}/>
-                {/* <Route path="/forest" component={DetailView} />
+                <Route path="/forest" component={DetailView} />
                 <Route path="/sky" component={DetailView} />
-                <Route path="/desert" component={DetailView} /> */}
+                <Route path="/desert" component={DetailView} /> 
 
         
 

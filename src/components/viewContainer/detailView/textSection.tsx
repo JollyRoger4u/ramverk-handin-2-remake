@@ -58,7 +58,8 @@ export default class TextSection extends Component<Props, State> {
         try {
             const response = await Axios.get(this.wikipediaApiUrl, {
                 params: {
-                    page: this.props.view,
+                    // page: this.props.view,
+                    page: localStorage.getItem('searchTerm'),
                     origin: '*',
                     format: 'json'
                 }
@@ -75,11 +76,11 @@ export default class TextSection extends Component<Props, State> {
             <ThemeContext.Consumer>
                 {({ theme }) => (
                     <div style={root}>
-                        {isLoading ? <Spinner /> : null}
-                        <p>massive bloody block of annoying text</p>
-                        {/*paragraphs.map((paragraph) =>
+                         {isLoading ? <Spinner /> : null} 
+                        {/* {<p>massive bloody block of annoying text</p>} */}
+                        {paragraphs.map((paragraph) =>
                             <p key={paragraph.substr(0, 10)} style={text(theme)}>{paragraph}</p>
-                        )*/}
+                        )}
                     </div>
                 )}
             </ThemeContext.Consumer>

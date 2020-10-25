@@ -21,7 +21,9 @@ export default class DetailView extends Component<Props, State> {
     }
 
     get view() {
-        return this.props.match.url.substr(1);
+        // return this.props.match.url.substr(1);
+        let tempTest = localStorage.getItem('searchTerm') as string
+        return tempTest
     }
 
     get imageSrc() {
@@ -32,6 +34,8 @@ export default class DetailView extends Component<Props, State> {
     closeModal = () => this.setState({ isModalOpen: false });
 
     render() {
+        
+
         return (
             <ThemeContext.Consumer>
                 {({ theme }) => (

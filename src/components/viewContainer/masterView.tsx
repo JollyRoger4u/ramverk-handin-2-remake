@@ -8,7 +8,6 @@ interface Props {
 }
 
 /** React function component */
- /* <SearchComponent /> */
  export default function MasterView(props: Props) {
 
     return (

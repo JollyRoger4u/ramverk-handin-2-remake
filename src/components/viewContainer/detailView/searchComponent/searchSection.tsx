@@ -16,11 +16,16 @@ export default class SearchSection extends Component <{}, {tempSearch: string, l
 
     
     this.state = {
-        lastSearch: "none",
-        tempSearch: "aa",
+        lastSearch: "lastSearch",
+        tempSearch: "tempSearch",
     }
     }
-
+    //Checks keypresses to detect if the button pressed is enter
+    isKeyEnter = (e: any) => {
+    if (e.key === "Enter") {
+        this.setState({lastSearch: 'enter clicked'})
+    }
+}
 
     componentDidMount() {
         let isTerm = localStorage.getItem('searchTerm')
@@ -39,9 +44,7 @@ export default class SearchSection extends Component <{}, {tempSearch: string, l
         localStorage.removeItem('searchTerm')
         this.setState({lastSearch: "cleared"})
     }
-    buttonClick = () => {
-        console.log("CLICK")
-    }
+
     render() {
         const searchAdd = "/search:"
         let sURL = "/search:" + this.state.tempSearch; 
@@ -49,8 +52,8 @@ export default class SearchSection extends Component <{}, {tempSearch: string, l
             <div>
                 <h1>in storage: {localStorage.getItem('searchTerm')}</h1>
                 <h1>in state: {this.state.lastSearch}</h1>
-                <input type="text" placeholder="search" className="searchField" onChange={this.updateSavedTerm}></input>
-                <Link to= {sURL} className='searchBtn' onClick={this.updateSavedTerm} >Search now</Link>
+                <input autoFocus type="text" placeholder="search" className="searchField" onKeyPress={this.isKeyEnter} onChange={this.updateSavedTerm}></input>
+                <Link to= {sURL} className='searchBtn' >Search now</Link>
                 <h1>tempsearch:  {sURL} ?</h1>
                 <h1>url:  {this.state.tempSearch} ?</h1>
                 <button onClick={this.clearLocal}>reset searchterm</button>
