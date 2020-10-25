@@ -13,11 +13,11 @@ interface Props {
     return (
         <div style={container}>
             <SearchComponent />
-            {props.detailViews.map((view) => (
+            {/* {props.detailViews.map((view) => (
                 <ViewSection key={view}>
                     <ImageLink view={view}/>
                 </ViewSection>
-            ))}
+            ))} */}
         </div>
     );
 }

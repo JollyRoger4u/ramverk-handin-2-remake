@@ -4,19 +4,18 @@ import {Link} from "react-router-dom"
 
 interface State {
     lastSearch: string;
-    currentSearch: string;
-    tempSearch: any;
+    tempSearch: string;
 }
 interface Props {
     view: string
 }
 export default class SearchSection extends Component <{}, {tempSearch: string, lastSearch: string}>{
-    constructor(props : any){
+    constructor(props : Props){
         super(props);
 
     
     this.state = {
-        lastSearch: "lastSearch",
+        lastSearch: "Search",
         tempSearch: "tempSearch",
     }
     }
@@ -26,7 +25,7 @@ export default class SearchSection extends Component <{}, {tempSearch: string, l
         this.setState({lastSearch: 'enter clicked'})
     }
 }
-
+    //Checks for earlier searches
     componentDidMount() {
         let isTerm = localStorage.getItem('searchTerm')
         if (isTerm){
@@ -37,6 +36,7 @@ export default class SearchSection extends Component <{}, {tempSearch: string, l
     updateSavedTerm = (event : any) => {
         this.setState({tempSearch:  event.target.value});
         localStorage.setItem('searchTerm', event.target.value)
+        console.log('update term: ' + localStorage.getItem('searchTerm'))
         
     }
 
@@ -48,14 +48,16 @@ export default class SearchSection extends Component <{}, {tempSearch: string, l
     render() {
         const searchAdd = "/search:"
         let sURL = "/search:" + this.state.tempSearch; 
+        console.log('render state: '+ this.state.tempSearch)
+        console.log('render tempSearch: ' + localStorage.getItem('searchTerm'))
         return (
             <div>
                 <h1>in storage: {localStorage.getItem('searchTerm')}</h1>
                 <h1>in state: {this.state.lastSearch}</h1>
-                <input autoFocus type="text" placeholder="search" className="searchField" onKeyPress={this.isKeyEnter} onChange={this.updateSavedTerm}></input>
+                <input autoFocus type="text" placeholder={this.state.lastSearch} className="searchField" onKeyPress={this.isKeyEnter} onChange={this.updateSavedTerm}></input>
                 <Link to= {sURL} className='searchBtn' >Search now</Link>
-                <h1>tempsearch:  {sURL} ?</h1>
-                <h1>url:  {this.state.tempSearch} ?</h1>
+                <h1>tempsearch: {this.state.tempSearch} ?</h1>
+                <h1>url:  {sURL}  ?</h1>
                 <button onClick={this.clearLocal}>reset searchterm</button>
 
             </div>

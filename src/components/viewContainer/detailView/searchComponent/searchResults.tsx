@@ -19,10 +19,14 @@ export default class DetailView extends Component<Props, State> {
     state: State = {
         isModalOpen: false
     }
-
+    componentDidMount(){
+        let testConsole = localStorage.getItem('searchTerm')
+        console.log('localstorage in searchresult: ' + testConsole)
+    }
     get view() {
         console.log(this.props.match.url.substr(1))
-        return this.props.match.url.substr(1);
+        return localStorage.getItem('searchTerm') as string
+        // return this.props.match.url.substr(1);
     }
 
     get imageSrc() {
