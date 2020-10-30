@@ -41,32 +41,43 @@ export default class SearchSection extends Component <{}, {tempSearch: string, l
     }
 
     clearLocal = () => {
-        localStorage.removeItem('searchTerm')
+        localStorage.clear()
         this.setState({lastSearch: "cleared"})
     }
 
     render() {
         const searchAdd = "/search:"
         let sURL = "/search:" + this.state.tempSearch; 
-        console.log('render state: '+ this.state.tempSearch)
-        console.log('render tempSearch: ' + localStorage.getItem('searchTerm'))
         return (
-            <div>
-                <h1>in storage: {localStorage.getItem('searchTerm')}</h1>
-                <h1>in state: {this.state.lastSearch}</h1>
+            
+            <div className="searchSection">
+                <button onClick={this.clearLocal}></button>
                 <input autoFocus type="text" placeholder={this.state.lastSearch} className="searchField" onKeyPress={this.isKeyEnter} onChange={this.updateSavedTerm}></input>
                 <Link to= {sURL} className='searchBtn' >Search now</Link>
-                <h1>tempsearch: {this.state.tempSearch} ?</h1>
-                <h1>url:  {sURL}  ?</h1>
-                <button onClick={this.clearLocal}>reset searchterm</button>
-
             </div>
         )
     }
 
 }
 
-/*
+/*        return (
+            <ThemeContext.Consumer>
+                {({ theme }) => (
+
+                    <div style={root(theme)} key={this.props.view}>
+                        <h1>{this.state.view}</h1>
+                        {this.state.imagesUrls.map((urls, index) =>
+                            <SearchCard key={index} urls={urls} />
+                            
+                        )}
+                    </div>
+                )}
+
+            </ThemeContext.Consumer>
+        )
+
+    }
+}
 state = {
     lastSearch: "",
     currentSearch: "",

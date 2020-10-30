@@ -21,10 +21,10 @@ export default class DetailView extends Component<Props, State> {
     }
     componentDidMount(){
         let testConsole = localStorage.getItem('searchTerm')
-        console.log('localstorage in searchresult: ' + testConsole)
+        //console.log('localstorage in searchresult: ' + testConsole)
     }
     get view() {
-        console.log(this.props.match.url.substr(1))
+        //console.log(this.props.match.url.substr(1))
         return localStorage.getItem('searchTerm') as string
         // return this.props.match.url.substr(1);
     }

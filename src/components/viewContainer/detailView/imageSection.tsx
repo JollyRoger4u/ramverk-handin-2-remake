@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Axios, { AxiosResponse } from 'axios';
 
-import ImageCard, { ImageUrls } from './imageCard';
+import SearchCard, { ImageUrls } from './searchComponent/searchCard';
 import { ThemedCSSProperties, ThemeContext } from '../../../contexts/themeContext';
 
 interface Props {
@@ -14,7 +14,6 @@ interface State {
 }
 
 export default class ImageSection extends Component<Props, State> {
-    /** Not a good place for the key.. well.. what the heck.. - GET YOUR OWN! */
     readonly accessKey = "fa8c88cf59c60c0b5207391d79029cad044c8acf7e10634328da3dbc62e87e89"
     readonly imageDatabaseApiUrl = "https://api.unsplash.com/search/photos/"
 
@@ -32,13 +31,14 @@ export default class ImageSection extends Component<Props, State> {
     }
     //async await
     async componentDidMount() {
+        //let imageSectionSaved = localStorage.getItem("likedImages")
+        //console.log("likedImages in imageSection " + imageSectionSaved )
         try {
             const response = await Axios.get(this.imageDatabaseApiUrl, {
                 params: {
                     client_id: this.accessKey,
                     // query: this.state.view,
                     query: localStorage.getItem('searchTerm'),
-                    //query: "ape",
                     //page: Math.round(Math.random() * 100),
                     per_page: 24,
                 }
@@ -57,7 +57,8 @@ export default class ImageSection extends Component<Props, State> {
                     <div style={root(theme)} key={this.props.view}>
                         <h1>{this.state.view}</h1>
                         {this.state.imagesUrls.map((urls, index) =>
-                            <ImageCard key={index} urls={urls} />
+                            <SearchCard key={index} urls={urls} />
+                            
                         )}
                     </div>
                 )}

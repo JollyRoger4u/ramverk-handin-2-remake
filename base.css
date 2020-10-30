@@ -19,6 +19,38 @@
 .likeIcon{
     width: 25px;
     height: 25px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #202020;
+    fill: red;
+    margin-top: 7px;
+}
+.likedIcon{
+    width: 25px;
+    height: 25px;
     position: absolute;
-    fill:red;
+    right: 10px;
+    top: 10px;
+}
+.cardDetails{
+    display: flex;
+    justify-content: space-between;
+}
+.searchSection{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.searchTerm{
+    font-family: "Arial Black", Gadget, sans-serif
+}
+.downloadBtn{
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-decoration: none;
+    background: #202020;
+    color: white;
+    border: 1px solid black;
+    line-height: 3;
+    padding: 0 10px;
+
 }
